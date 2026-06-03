@@ -1,10 +1,7 @@
-const { EleventyHtmlBasePlugin } = require("@11ty/eleventy");
 const MarkdownIt = require("markdown-it");
 const md = new MarkdownIt({ html: true, linkify: true });
 
 module.exports = function (eleventyConfig) {
-  // Add plugins
-  eleventyConfig.addPlugin(EleventyHtmlBasePlugin);
   
   // Add markdown filter
   eleventyConfig.addFilter("markdown", (text) => {
