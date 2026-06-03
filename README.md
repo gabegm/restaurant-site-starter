@@ -95,6 +95,26 @@ If you're comfortable with Git, here's the quick version:
 
 See the [Troubleshooting](#troubleshooting) section below for help.
 
+### Local Development (Preview Before Publishing)
+
+Want to preview your site locally before pushing? Here's how:
+
+```bash
+# 1. Install dependencies
+npm install
+
+# 2. Start the local dev server (auto-reloads on changes)
+npm run dev
+```
+
+Your site will be available at `http://localhost:3000`. Press `Ctrl+C` to stop the server.
+
+To build for production (no live reload):
+
+```bash
+npm run build
+```
+
 ---
 
 ## Customizing Your Design
@@ -252,6 +272,16 @@ To upload images:
 Shows the hero image, menu with photos, hours, map, and contact info.
 
 ![Homepage](docs/screenshots/homepage.png)
+
+### Menu
+Displays your restaurant's menu with categories, items, prices, descriptions, and optional photos.
+
+![Menu](docs/screenshots/menu.png)
+
+### Map
+Shows your restaurant's location with an embedded interactive map.
+
+![Map](docs/screenshots/map.png)
 
 ### Booking Form
 Customers can book a table by filling in their name, email, phone, date, time (24-hour format), party size, and special requests.

@@ -15,7 +15,7 @@ module.exports = function (eleventyConfig) {
   // Copy assets
   eleventyConfig.addPassthroughCopy({
     "assets/css": "css",
-    "assets/js": "js",
+    "js": "js",
     "assets/logo.jpg": "logo.jpg",
     "assets/hero.jpg": "hero.jpg",
     "assets/menu": "assets/menu"
