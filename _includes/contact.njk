@@ -1,0 +1,19 @@
+{% if restaurant.address or restaurant.phone or restaurant.social %}
+<section class="contact-section" id="contact">
+  <div class="container">
+    <h2>Contact</h2>
+    <div class="contact-info">
+      {% if restaurant.address %}<p>{{ restaurant.address }}</p>{% endif %}
+      {% if restaurant.phone %}<p><a href="tel:{{ restaurant.phone }}">{{ restaurant.phone }}</a></p>{% endif %}
+      {% if restaurant.social %}
+      <div class="social-links">
+        {% if restaurant.social.instagram %}<a href="{{ restaurant.social.instagram }}" target="_blank" rel="noopener">Instagram</a>{% endif %}
+        {% if restaurant.social.facebook %}<a href="{{ restaurant.social.facebook }}" target="_blank" rel="noopener">Facebook</a>{% endif %}
+        {% if restaurant.social.twitter %}<a href="{{ restaurant.social.twitter }}" target="_blank" rel="noopener">Twitter</a>{% endif %}
+        {% if restaurant.social.yelp %}<a href="{{ restaurant.social.yelp }}" target="_blank" rel="noopener">Yelp</a>{% endif %}
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+{% endif %}

@@ -1,0 +1,15 @@
+{% if restaurant.hours %}
+<section class="hours-section" id="hours">
+  <div class="container">
+    <h2>Hours</h2>
+    <div class="hours-grid">
+      {% for day, time in restaurant.hours %}
+      <div class="hour-item">
+        <span class="hour-day">{{ day }}</span>
+        <span class="hour-time">{{ time }}</span>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}

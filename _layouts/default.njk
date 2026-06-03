@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ restaurant.name }}</title>
+  <meta name="description" content="{% if restaurant.tagline %}{{ restaurant.tagline }}{% else %}{{ restaurant.name }}{% endif %}">
+  <link rel="stylesheet" href="/css/styles.css">
+  {% if restaurant.logo %}<link rel="icon" href="{{ restaurant.logo }}">{% endif %}
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <div class="header-content">
+        {% if restaurant.logo %}
+        <img src="{{ restaurant.logo }}" alt="{{ restaurant.name }} logo" class="logo">
+        {% endif %}
+        <div class="header-text">
+          <h1>{{ restaurant.name }}</h1>
+          {% if restaurant.tagline %}<p class="tagline">{{ restaurant.tagline }}</p>{% endif %}
+        </div>
+        <div class="header-actions">
+          {% if restaurant.phone %}
+          <a href="tel:{{ restaurant.phone }}" class="phone-link">{{ restaurant.phone }}</a>
+          {% endif %}
+          <button id="dark-mode-toggle" class="dark-mode-btn" aria-label="Toggle dark mode">🌙</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    {% if restaurant.hero %}
+    <section class="hero">
+      <img src="{{ restaurant.hero }}" alt="{{ restaurant.name }}">
+      <div class="hero-overlay">
+        {% if restaurant.tagline %}<p class="hero-tagline">{{ restaurant.tagline }}</p>{% endif %}
+      </div>
+    </section>
+    {% endif %}
+
+    {% if restaurant.about %}
+    {% include 'about.njk' %}
+    {% endif %}
+
+    <section class="menu-section" id="menu">
+      <div class="container">
+        <h2>Menu</h2>
+        {% set categories = restaurant.menu %}
+        {% for category in categories %}
+        <div class="menu-category">
+          <h3>{{ category.name }}</h3>
+          <div class="menu-items">
+            {% for item in category.items %}
+            <div class="menu-item">
+              {% if item.photo %}
+              <img src="{{ item.photo }}" alt="{{ item.name }}" class="menu-item-photo">
+              {% endif %}
+              <div class="menu-item-details">
+                <div class="menu-item-header">
+                  <span class="menu-item-name">{{ item.name }}</span>
+                  <span class="menu-item-price">{{ item.price }}</span>
+                </div>
+                {% if item.description %}
+                <p class="menu-item-description">{{ item.description }}</p>
+                {% endif %}
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </section>
+
+    {% include 'map.njk' %}
+    {% include 'hours.njk' %}
+    {% include 'contact.njk' %}
+    {% include 'booking-form.njk' %}
+    {% include 'order-form.njk' %}
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      {% if restaurant.address %}<p>{{ restaurant.address }}</p>{% endif %}
+      {% if restaurant.phone %}<p><a href="tel:{{ restaurant.phone }}">{{ restaurant.phone }}</a></p>{% endif %}
+      {% if restaurant.social %}
+      <div class="social-links">
+        {% if restaurant.social.instagram %}<a href="{{ restaurant.social.instagram }}" target="_blank" rel="noopener">Instagram</a>{% endif %}
+        {% if restaurant.social.facebook %}<a href="{{ restaurant.social.facebook }}" target="_blank" rel="noopener">Facebook</a>{% endif %}
+      </div>
+      {% endif %}
+      <p class="copyright">&copy; {{ restaurant.name }}. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="/js/forms.js"></script>
+</body>
+</html>

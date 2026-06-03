@@ -1,0 +1,46 @@
+{% if restaurant.booking %}
+<section class="form-section" id="booking">
+  <div class="container">
+    <h3>Book a Table</h3>
+    <form id="booking-form" data-restaurant-name="{{ restaurant.name }}" data-restaurant-email="{{ restaurant.email or '' }}">
+      <div class="form-group">
+        <label for="booking-name">Your Name</label>
+        <input type="text" id="booking-name" name="name" required>
+      </div>
+      <div class="form-group">
+        <label for="booking-email">Email</label>
+        <input type="email" id="booking-email" name="email" required>
+      </div>
+      <div class="form-group">
+        <label for="booking-phone">Phone</label>
+        <input type="tel" id="booking-phone" name="phone" required>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="booking-date">Date</label>
+          <input type="date" id="booking-date" name="date" required>
+        </div>
+        <div class="form-group">
+          <label for="booking-time">Time</label>
+          <input type="text" id="booking-time" name="time" required placeholder="18:30" pattern="([01][0-9]|2[0-3]):[0-5][0-9]" title="Use 24-hour format (e.g. 18:30)">
+          <small style="color: var(--color-text-light); font-size: 0.8rem;">24-hour format: 18:30</small>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="booking-party">Party Size</label>
+        <select id="booking-party" name="partySize" required>
+          <option value="">Select...</option>
+          {% for i in range(1, 20) %}
+          <option value="{{ i }}">{{ i }} {% if i == 1 %}person{% else %}people{% endif %}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="booking-notes">Special Requests</label>
+        <textarea id="booking-notes" name="notes" placeholder="Allergies, celebrations, seating preferences..."></textarea>
+      </div>
+      <button type="submit" class="submit-btn">Send Booking Request</button>
+    </form>
+  </div>
+</section>
+{% endif %}

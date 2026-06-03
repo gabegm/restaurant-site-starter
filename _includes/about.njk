@@ -1,0 +1,10 @@
+{% if restaurant.about %}
+<section class="about-section" id="about">
+  <div class="container">
+    <h2>About Us</h2>
+    <div class="about-content">
+      {{ restaurant.about | markdown | safe }}
+    </div>
+  </div>
+</section>
+{% endif %}

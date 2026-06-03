@@ -1,0 +1,16 @@
+{% if restaurant.map %}
+<section class="map-section" id="location">
+  <div class="container">
+    <h2>Find Us</h2>
+  </div>
+  <div class="map-container">
+    <iframe 
+      src="{{ restaurant.map | osmEmbedUrl }}" 
+      allowfullscreen 
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+      title="{{ restaurant.name }} location">
+    </iframe>
+  </div>
+</section>
+{% endif %}
