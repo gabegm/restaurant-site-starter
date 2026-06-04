@@ -1,51 +1,51 @@
 ---
-name: "Tony's Pizza"
-tagline: "Authentic Neapolitan Since 1985"
-address: "123 Main St, Anytown, USA"
-phone: "(555) 123-4567"
-email: "info@tonyspizza.com"
+name: "Gaststätte München"
+tagline: "Bayerische Küche seit 1987"
+address: "Marienplatz 8, 80331 München"
+phone: "+49 89 12345678"
+email: "info@gaststaette-muenchen.de"
 hours: {
-  mon: "11:00 AM - 10:00 PM",
-  tue: "11:00 AM - 10:00 PM",
-  wed: "11:00 AM - 10:00 PM",
-  thu: "11:00 AM - 10:00 PM",
-  fri: "11:00 AM - 11:00 PM",
-  sat: "11:00 AM - 11:00 PM",
-  sun: "12:00 PM - 9:00 PM"
+  mon: "11:00 - 22:00",
+  tue: "11:00 - 22:00",
+  wed: "11:00 - 22:00",
+  thu: "11:00 - 23:00",
+  fri: "11:00 - 00:00",
+  sat: "11:00 - 00:00",
+  sun: "12:00 - 21:00"
 }
 logo: "logo.jpg"
 hero: "hero.jpg"
-map: "40.7128, -74.0060"
+map: "48.1372, 11.5755"
 social:
-  instagram: "https://instagram.com/tonyspizza"
-  facebook: "https://facebook.com/tonyspizza"
-about: "Tony's Pizza brings the authentic flavors of Naples to Anytown. Founded in 1985 by Tony Rossi, our restaurant has been serving handcrafted pizzas made with the finest imported ingredients. Every dish tells a story of tradition, passion, and love for Italian cuisine."
+  instagram: "https://instagram.com/gaststaettemuenchen"
+  facebook: "https://facebook.com/gaststaettemuenchen"
+about: "Gaststätte München liegt im Herzen von München, nur Schritte vom Marienplatz entfernt. Seit 1987 verbinden wir bayerische Tradition mit mediterranem Flair. Frische Zutaten, handgemachte Pasta und unsere berühmten Weißwürste — alles mit Liebe zubereitet."
 booking: true
 delivery: true
 ---
 
-## Appetizers
-- Bruschetta — $12 — Toasted bread with tomatoes, garlic, basil — assets/menu/bruschetta.jpg
-- Calamari — $14 — Fried squid with marinara — assets/menu/calamari.jpg
-- Caprese Salad — $11 — Fresh mozzarella, tomatoes, basil, balsamic glaze — assets/menu/caprese.jpg
+## Vorspeisen
+- Bruschetta — €8 — Geröstetes Brot mit Tomaten, Knoblauch, Basilikum — assets/menu/bruschetta.jpg
+- Calamari — €11 — Gebratene Tintenfische mit Marinara — assets/menu/calamari.jpg
+- Caprese — €9 — Frischer Mozzarella, Tomaten, Basilikum, Balsamico — assets/menu/caprese.jpg
 
 ## Pizza
-- Margherita — $18 — San Marzano tomatoes, mozzarella, basil — assets/menu/margherita.jpg
-- Pepperoni — $20 — House-made pepperoni, mozzarella — assets/menu/peperoni.jpg
-- Quattro Formaggi — $21 — Four cheese blend, garlic, honey drizzle — assets/menu/quattro-formaggi.jpg
-- Prosciutto e Rucola — $23 — Prosciutto, arugula, parmesan — assets/menu/prosciutto-rucola.jpg
+- Margherita — €13 — San-Marzano-Tomaten, Mozzarella, Basilikum — assets/menu/margherita.jpg
+- Diavola — €15 — Scharfe Salami, Peperoni, Mozzarella — assets/menu/peperoni.jpg
+- Quattro Formaggi — €14 — Vier Käsesorten, Knoblauch, Honig — assets/menu/quattro-formaggi.jpg
+- Prosciutto e Rucola — €16 — Schinken, Rucola, Parmesan — assets/menu/prosciutto-rucola.jpg
 
 ## Pasta
-- Spaghetti Carbonara — $19 — Pancetta, egg, parmesan, black pepper — assets/menu/carbonara.jpg
-- Penne Arrabbiata — $17 — Spicy tomato sauce, garlic, chili flakes — assets/menu/penne.jpg
-- Fettuccine Alfredo — $18 — Cream sauce, parmesan, butter — assets/menu/fettuccine.jpg
+- Carbonara — €13 — Speck, Ei, Parmesan, schwarzer Pfeffer — assets/menu/carbonara.jpg
+- Penne all'Arrabbiata — €12 — Scharfe Tomatensauce, Knoblauch, Chiliflocken — assets/menu/penne.jpg
+- Fettuccine Alfredo — €12 — Cremige Sauce, Parmesan, Butter — assets/menu/fettuccine.jpg
 
 ## Desserts
-- Tiramisu — $10 — Classic Italian — assets/menu/tiramisu.jpg
-- Cannoli — $8 — Ricotta-filled, chocolate chips — assets/menu/cannoli.jpg
-- Panna Cotta — $9 — Vanilla bean, berry compote — assets/menu/panna-cotta.jpg
+- Tiramisu — €7 — Klassisches italienisches Dessert — assets/menu/tiramisu.jpg
+- Cannoli — €6 — Ricotta gefüllt, Schokoladenstreusel — assets/menu/cannoli.jpg
+- Panna Cotta — €6 — Vanillemousse, Beerenkompott — assets/menu/panna-cotta.jpg
 
-## Drinks
-- Italian Soda — $4 — Choice of flavor — assets/menu/italian-soda.jpg
-- Espresso — $3 — Single or double shot — assets/menu/espresso.jpg
-- House Wine (glass) — $8 — Red or white — assets/menu/wine.jpg
+## Getränke
+- Limonata — €4 — Nach Wahl — assets/menu/italian-soda.jpg
+- Espresso — €3 — Ein- oder doppelt — assets/menu/espresso.jpg
+- Hauswein (Glas) — €6 — Rot oder Weiß — assets/menu/wine.jpg

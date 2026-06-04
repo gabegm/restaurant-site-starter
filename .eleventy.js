@@ -18,10 +18,10 @@ module.exports = function (eleventyConfig) {
     "assets/menu": "assets/menu"
   });
 
-  // Filter for formatting currency
+  // Filter for formatting currency (Euros)
   eleventyConfig.addFilter("currency", (value) => {
     if (typeof value === "number") {
-      return `$${value.toFixed(2)}`;
+      return `€${value.toFixed(2)}`;
     }
     return value;
   });
