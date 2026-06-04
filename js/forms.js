@@ -32,6 +32,11 @@ function storeOriginalTexts() {
   if (footerP) {
     originalTexts.set('footer', footerP.textContent);
   }
+  
+  // Store day names
+  document.querySelectorAll('.hour-day').forEach((el, i) => {
+    originalTexts.set('day:' + i, el.textContent);
+  });
 }
 
 function setLanguage(lang) {
@@ -175,6 +180,12 @@ function applyLanguage(lang) {
     if (aboutContent && originalAbout) {
       aboutContent.innerHTML = originalAbout;
     }
+    
+    // Restore day names
+    document.querySelectorAll('.hour-day').forEach((el, i) => {
+      const original = originalTexts.get('day:' + i);
+      if (original) el.textContent = original;
+    });
     
     const footerP = document.querySelector('.site-footer p:last-of-type');
     const originalFooter = originalTexts.get('footer');
