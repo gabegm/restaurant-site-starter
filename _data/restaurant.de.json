@@ -1,6 +1,7 @@
 {
   "name": "Tony's Pizza",
   "tagline": "Authentisch Neapolitanisch Seit 1987",
+  "about_text": "Tony's Pizza bringt die authentischen Aromen Neapels nach München. Gegründet 1985 von Tony Rossi, servieren wir seitdem handgemachte Pizzen mit den feinsten importierten Zutaten. Jede Speiche erzählt eine Geschichte von Tradition, Leidenschaft und Liebe zur italienischen Küche.",
   "menu_labels": {
     "appetizers": "Vorspeisen",
     "pizza": "Pizza",
@@ -43,6 +44,36 @@
     "hours": "Öffnungszeiten",
     "booking": "Tisch reservieren",
     "order": "Bestellen"
+  },
+  "forms": {
+    "booking": {
+      "title": "Tisch reservieren",
+      "name": "Ihr Name",
+      "email": "E-Mail",
+      "phone": "Telefon",
+      "date": "Datum",
+      "time": "Uhrzeit",
+      "party_size": "Personenzahl",
+      "special_requests": "Besondere Wünsche",
+      "placeholder_requests": "Allergien, Feiern, Sitzwünsche...",
+      "submit": "Reservierungsanfrage senden",
+      "select": "Auswählen...",
+      "time_hint": "24-Stunden-Format: 18:30"
+    },
+    "order": {
+      "title": "Bestellen zum Abholen/Liefern",
+      "name": "Ihr Name",
+      "phone": "Telefon",
+      "order_type": "Bestellart",
+      "pickup": "Abholung",
+      "delivery": "Lieferung",
+      "address": "Lieferadresse",
+      "address_placeholder": "Musterstraße 1, Stadt, PLZ",
+      "select_items": "Artikel auswählen",
+      "special_instructions": "Besondere Anweisungen",
+      "placeholder_instructions": "Allergien, Wünsche, etc.",
+      "submit": "Bestellanfrage senden"
+    }
   },
   "footer": "Alle Rechte vorbehalten."
 }

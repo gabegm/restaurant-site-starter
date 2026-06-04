@@ -64,6 +64,56 @@ function applyLanguage(lang) {
           }
         });
         
+        // About text
+        const aboutContent = document.querySelector('.about-content');
+        if (aboutContent && translations.about_text) {
+          aboutContent.innerHTML = translations.about_text;
+        }
+        
+        // Booking form
+        const bookingForm = document.getElementById('booking-form');
+        if (bookingForm && translations.forms && translations.forms.booking) {
+          const b = translations.forms.booking;
+          const labels = bookingForm.querySelectorAll('label');
+          const labelsMap = ['name', 'email', 'phone', 'date', 'time', 'party_size', 'special_requests'];
+          labels.forEach((label, i) => {
+            if (labelsMap[i] && b[labelsMap[i]]) {
+              label.textContent = b[labelsMap[i]];
+            }
+          });
+          const submitBtn = bookingForm.querySelector('button[type="submit"]');
+          if (submitBtn && b.submit) submitBtn.textContent = b.submit;
+          const timeHint = bookingForm.querySelector('small');
+          if (timeHint && b.time_hint) timeHint.textContent = b.time_hint;
+        }
+        
+        // Order form
+        const orderForm = document.getElementById('order-form');
+        if (orderForm && translations.forms && translations.forms.order) {
+          const o = translations.forms.order;
+          const labels = orderForm.querySelectorAll('label');
+          const labelsMap = ['name', 'phone', 'order_type', 'address'];
+          labels.forEach((label, i) => {
+            if (labelsMap[i] && o[labelsMap[i]]) {
+              label.textContent = o[labelsMap[i]];
+            }
+          });
+          const typeSelect = orderForm.querySelector('select[name="orderType"]');
+          if (typeSelect) {
+            const options = typeSelect.querySelectorAll('option');
+            if (options[0]) options[0].textContent = o.pickup;
+            if (options[1]) options[1].textContent = o.delivery;
+          }
+          const addressInput = orderForm.querySelector('input[name="address"]');
+          if (addressInput && o.address_placeholder) addressInput.placeholder = o.address_placeholder;
+          const selectItemsH4 = orderForm.querySelector('h4');
+          if (selectItemsH4 && o.select_items) selectItemsH4.textContent = o.select_items;
+          const submitBtn = orderForm.querySelector('button[type="submit"]');
+          if (submitBtn && o.submit) submitBtn.textContent = o.submit;
+          const notesTextarea = orderForm.querySelector('textarea[name="notes"]');
+          if (notesTextarea && o.placeholder_instructions) notesTextarea.placeholder = o.placeholder_instructions;
+        }
+        
         // Footer
         const footerP = document.querySelector('.site-footer p:last-of-type');
         if (footerP && translations.footer) {
