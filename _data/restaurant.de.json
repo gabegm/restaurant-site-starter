@@ -1,0 +1,48 @@
+{
+  "name": "Gaststätte München",
+  "tagline": "Bayerische Küche seit 1987",
+  "menu_labels": {
+    "appetizers": "Vorspeisen",
+    "pizza": "Pizza",
+    "pasta": "Pasta",
+    "desserts": "Desserts",
+    "drinks": "Getränke"
+  },
+  "menu_items": {
+    "appetizers": [
+      { "name": "Bruschetta", "description": "Geröstetes Brot mit Tomaten, Knoblauch, Basilikum" },
+      { "name": "Calamari", "description": "Gebratene Tintenfische mit Marinara" },
+      { "name": "Caprese", "description": "Frischer Mozzarella, Tomaten, Basilikum, Balsamico" }
+    ],
+    "pizza": [
+      { "name": "Margherita", "description": "San-Marzano-Tomaten, Mozzarella, Basilikum" },
+      { "name": "Diavola", "description": "Scharfe Salami, Peperoni, Mozzarella" },
+      { "name": "Quattro Formaggi", "description": "Vier Käsesorten, Knoblauch, Honig" },
+      { "name": "Prosciutto e Rucola", "description": "Schinken, Rucola, Parmesan" }
+    ],
+    "pasta": [
+      { "name": "Carbonara", "description": "Speck, Ei, Parmesan, schwarzer Pfeffer" },
+      { "name": "Penne all'Arrabbiata", "description": "Scharfe Tomatensauce, Knoblauch, Chiliflocken" },
+      { "name": "Fettuccine Alfredo", "description": "Cremige Sauce, Parmesan, Butter" }
+    ],
+    "desserts": [
+      { "name": "Tiramisu", "description": "Klassisches italienisches Dessert" },
+      { "name": "Cannoli", "description": "Ricotta gefüllt, Schokoladenstreusel" },
+      { "name": "Panna Cotta", "description": "Vanillemousse, Beerenkompott" }
+    ],
+    "drinks": [
+      { "name": "Limonata", "description": "Nach Wahl" },
+      { "name": "Espresso", "description": "Ein- oder doppelt" },
+      { "name": "Hauswein (Glas)", "description": "Rot oder Weiß" }
+    ]
+  },
+  "section_titles": {
+    "menu": "Speisekarte",
+    "about": "Über uns",
+    "location": "Finden Sie uns",
+    "hours": "Öffnungszeiten",
+    "booking": "Tisch reservieren",
+    "order": "Bestellen"
+  },
+  "footer": "Alle Rechte vorbehalten."
+}

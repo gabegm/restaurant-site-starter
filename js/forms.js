@@ -1,0 +1,186 @@
+// Language switching
+const LANG_KEY = 'restaurant-lang';
+const DEFAULT_LANG = 'en';
+
+function getLanguage() {
+  return localStorage.getItem(LANG_KEY) || DEFAULT_LANG;
+}
+
+function setLanguage(lang) {
+  localStorage.setItem(LANG_KEY, lang);
+  applyLanguage(lang);
+}
+
+function applyLanguage(lang) {
+  const btn = document.getElementById('lang-toggle');
+  if (!btn) return;
+  
+  btn.textContent = lang === 'de' ? 'EN' : 'DE';
+  btn.setAttribute('aria-label', lang === 'de' ? 'Switch to English' : 'Zur deutschen Sprache wechseln');
+  
+  // Load translations
+  if (lang === 'de') {
+    fetch('_data/restaurant.de.json')
+      .then(r => r.json())
+      .then(translations => {
+        // Section titles
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+          const key = el.getAttribute('data-i18n');
+          if (translations.section_titles && translations.section_titles[key]) {
+            el.textContent = translations.section_titles[key];
+          }
+        });
+        
+        // Menu labels
+        const menuLabels = translations.menu_labels || {};
+        document.querySelectorAll('.menu-category h3').forEach((h3, i) => {
+          const keys = Object.keys(menuLabels);
+          if (keys[i] && menuLabels[keys[i]]) {
+            h3.textContent = menuLabels[keys[i]];
+          }
+        });
+        
+        // Footer
+        const footerP = document.querySelector('.site-footer p:last-of-type');
+        if (footerP && translations.footer) {
+          footerP.textContent = '© ' + document.querySelector('h1').textContent + '. ' + translations.footer;
+        }
+      })
+      .catch(() => console.log('German translations not found, using English'));
+  }
+}
+
+// Initialize language
+document.addEventListener('DOMContentLoaded', () => {
+  const lang = getLanguage();
+  applyLanguage(lang);
+  
+  // Language toggle button
+  const langBtn = document.getElementById('lang-toggle');
+  if (langBtn) {
+    langBtn.addEventListener('click', () => {
+      const current = getLanguage();
+      setLanguage(current === 'de' ? DEFAULT_LANG : 'de');
+    });
+  }
+  
+  // Dark mode toggle
+  const darkBtn = document.getElementById('dark-mode-toggle');
+  if (darkBtn) {
+    const isDark = localStorage.getItem('dark-mode') === 'true';
+    if (isDark) {
+      document.body.classList.add('dark-mode');
+      darkBtn.textContent = '☀️';
+    }
+    
+    darkBtn.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+      const dark = document.body.classList.contains('dark-mode');
+      localStorage.setItem('dark-mode', dark);
+      darkBtn.textContent = dark ? '☀️' : '🌙';
+    });
+  }
+});
+
+// Booking form handling
+document.addEventListener('DOMContentLoaded', () => {
+  const bookingForm = document.getElementById('booking-form');
+  if (bookingForm) {
+    bookingForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const btn = bookingForm.querySelector('button[type="submit"]');
+      const originalText = btn.textContent;
+      btn.textContent = 'Sending...';
+      btn.disabled = true;
+      
+      const formData = new FormData(bookingForm);
+      const data = Object.fromEntries(formData.entries());
+      
+      try {
+        const response = await fetch('https://formspree.io/f/' + bookingForm.dataset.formId, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+        
+        if (response.ok) {
+          btn.textContent = '✓ Sent!';
+          bookingForm.reset();
+          setTimeout(() => {
+            btn.textContent = originalText;
+            btn.disabled = false;
+          }, 3000);
+        } else {
+          throw new Error('Failed to send');
+        }
+      } catch (error) {
+        btn.textContent = '✗ Error';
+        setTimeout(() => {
+          btn.textContent = originalText;
+          btn.disabled = false;
+        }, 3000);
+      }
+    });
+  }
+  
+  // Order form handling
+  const orderForm = document.getElementById('order-form');
+  if (orderForm) {
+    const typeSelect = orderForm.querySelector('select[name="order_type"]');
+    const addressGroup = document.getElementById('address-group');
+    
+    if (typeSelect && addressGroup) {
+      typeSelect.addEventListener('change', () => {
+        addressGroup.style.display = typeSelect.value === 'delivery' ? 'block' : 'none';
+      });
+    }
+    
+    orderForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const btn = orderForm.querySelector('button[type="submit"]');
+      const originalText = btn.textContent;
+      btn.textContent = 'Sending...';
+      btn.disabled = true;
+      
+      const formData = new FormData(orderForm);
+      const data = Object.fromEntries(formData.entries());
+      
+      // Collect selected items
+      const items = {};
+      orderForm.querySelectorAll('input[name^="item_"]').forEach(input => {
+        const qty = input.value;
+        if (qty > 0) {
+          const key = input.name.replace('_qty', '');
+          items[key] = qty;
+        }
+      });
+      data.items = JSON.stringify(items);
+      
+      try {
+        const response = await fetch('https://formspree.io/f/' + orderForm.dataset.formId, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+        
+        if (response.ok) {
+          btn.textContent = '✓ Order sent!';
+          orderForm.reset();
+          updateOrderTotal();
+          setTimeout(() => {
+            btn.textContent = originalText;
+            btn.disabled = false;
+          }, 3000);
+        } else {
+          throw new Error('Failed to send');
+        }
+      } catch (error) {
+        btn.textContent = '✗ Error';
+        setTimeout(() => {
+          btn.textContent = originalText;
+          btn.disabled = false;
+        }, 3000);
+      }
+    });
+  }
+});
