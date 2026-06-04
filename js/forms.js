@@ -89,6 +89,7 @@ function applyLanguage(lang) {
             'pizza': 'pizza',
             'pasta': 'pasta',
             'desserts': 'desserts',
+            'drinks': 'drinks',
             'getranke': 'drinks',
             'getränke': 'drinks'
           };
