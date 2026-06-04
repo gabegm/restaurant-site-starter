@@ -4,10 +4,14 @@
   "description": "A starter kit for restaurant websites with menus, booking, and delivery forms.",
   "scripts": {
     "dev": "npx @11ty/eleventy --serve --port=3000",
-    "build": "npx @11ty/eleventy"
+    "build": "npx @11ty/eleventy",
+    "test": "vitest run"
   },
   "dependencies": {
     "@11ty/eleventy": "^3.0.0"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "vitest": "^4.1.8"
+  }
 }

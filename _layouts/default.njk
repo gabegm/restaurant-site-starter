@@ -100,7 +100,7 @@
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script>
     (function() {
-      const coords = {{ restaurant.map }}.split(',').map(c => parseFloat(c.trim()));
+      const coords = "{{ restaurant.map }}".split(',').map(c => parseFloat(c.trim()));
       if (isNaN(coords[0]) || isNaN(coords[1])) return;
       const map = L.map('map').setView(coords, 15);
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
