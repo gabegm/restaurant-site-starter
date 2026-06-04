@@ -1,9 +1,31 @@
 // Language switching
 const LANG_KEY = 'restaurant-lang';
 const DEFAULT_LANG = 'en';
+let originalTexts = new Map();
 
 function getLanguage() {
   return localStorage.getItem(LANG_KEY) || DEFAULT_LANG;
+}
+
+function storeOriginalTexts() {
+  if (originalTexts.size > 0) return; // Already stored
+  
+  // Store section titles
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    originalTexts.set('title:' + key, el.textContent);
+  });
+  
+  // Store menu category labels
+  document.querySelectorAll('.menu-category h3').forEach((h3, i) => {
+    originalTexts.set('menu:' + i, h3.textContent);
+  });
+  
+  // Store footer
+  const footerP = document.querySelector('.site-footer p:last-of-type');
+  if (footerP) {
+    originalTexts.set('footer', footerP.textContent);
+  }
 }
 
 function setLanguage(lang) {
@@ -18,7 +40,9 @@ function applyLanguage(lang) {
   btn.textContent = lang === 'de' ? 'EN' : 'DE';
   btn.setAttribute('aria-label', lang === 'de' ? 'Switch to English' : 'Zur deutschen Sprache wechseln');
   
-  // Load translations
+  // Store original English texts on first load
+  storeOriginalTexts();
+  
   if (lang === 'de') {
     fetch('_data/restaurant.de.json')
       .then(r => r.json())
@@ -47,6 +71,24 @@ function applyLanguage(lang) {
         }
       })
       .catch(() => console.log('German translations not found, using English'));
+  } else {
+    // Restore English
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      const original = originalTexts.get('title:' + key);
+      if (original) el.textContent = original;
+    });
+    
+    document.querySelectorAll('.menu-category h3').forEach((h3, i) => {
+      const original = originalTexts.get('menu:' + i);
+      if (original) h3.textContent = original;
+    });
+    
+    const footerP = document.querySelector('.site-footer p:last-of-type');
+    const originalFooter = originalTexts.get('footer');
+    if (footerP && originalFooter) {
+      footerP.textContent = originalFooter;
+    }
   }
 }
 
