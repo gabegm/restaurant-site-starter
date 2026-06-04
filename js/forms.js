@@ -127,7 +127,7 @@ function applyLanguage(lang) {
         if (orderForm && translations.forms && translations.forms.order) {
           const o = translations.forms.order;
           const labels = orderForm.querySelectorAll('label');
-          const labelsMap = ['name', 'phone', 'order_type', 'address'];
+          const labelsMap = ['name', 'phone', 'order_type', 'address', 'special_instructions'];
           labels.forEach((label, i) => {
             if (labelsMap[i] && o[labelsMap[i]]) {
               label.textContent = o[labelsMap[i]];
