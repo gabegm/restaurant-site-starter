@@ -6,6 +6,7 @@
   <title>{{ restaurant.name }}</title>
   <meta name="description" content="{% if restaurant.tagline %}{{ restaurant.tagline }}{% else %}{{ restaurant.name }}{% endif %}">
   <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   {% if restaurant.logo %}<link rel="icon" href="{{ restaurant.logo }}">{% endif %}
 </head>
 <body>
@@ -95,5 +96,20 @@
   </footer>
 
   <script src="js/forms.js"></script>
+  {% if restaurant.map %}
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script>
+    (function() {
+      const coords = {{ restaurant.map }}.split(',').map(c => parseFloat(c.trim()));
+      if (isNaN(coords[0]) || isNaN(coords[1])) return;
+      const map = L.map('map').setView(coords, 15);
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+      }).addTo(map);
+      L.marker(coords).addTo(map);
+    })();
+  </script>
+  {% endif %}
 </body>
 </html>

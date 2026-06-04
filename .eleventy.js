@@ -26,17 +26,6 @@ module.exports = function (eleventyConfig) {
     return value;
   });
 
-  // Filter for generating OSM iframe URL from coordinates
-  eleventyConfig.addFilter("osmEmbedUrl", (coords) => {
-    if (!coords) return "";
-    const [lat, lon] = coords.split(",").map(c => parseFloat(c.trim()));
-    if (isNaN(lat) || isNaN(lon)) return "";
-    
-    const span = 0.01;
-    const bbox = `${lon - span},${lat - span},${lon + span},${lat + span}`;
-    return `https://www.openstreetmap.org/export/embed.html?bbox=${encodeURIComponent(bbox)}&layer=mapnik&marker=${lat},${lon}`;
-  });
-
   return {
     dir: {
       input: ".",
