@@ -44,7 +44,9 @@
     "location": "Finden Sie uns",
     "hours": "Öffnungszeiten",
     "booking": "Tisch reservieren",
-    "order": "Bestellen"
+    "order": "Bestellen",
+    "booking_title": "Tisch reservieren",
+    "order_title": "Bestellen zum Abholen/Liefern"
   },
   "forms": {
     "booking": {

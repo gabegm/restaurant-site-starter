@@ -1,7 +1,7 @@
 {% if restaurant.delivery %}
 <section class="form-section" id="order">
   <div class="container">
-    <h3>Order for Pickup/Delivery</h3>
+    <h3 data-i18n="order_title">Order for Pickup/Delivery</h3>
     <form id="order-form" data-restaurant-name="{{ restaurant.name }}" data-restaurant-email="{{ restaurant.email or '' }}">
       <div class="form-group">
         <label for="order-name">Your Name</label>

@@ -61,12 +61,40 @@ function applyLanguage(lang) {
           }
         });
         
-        // Menu labels
+        // Day of week translations
+        const dayMap = {
+          'mon': 'Montag',
+          'tue': 'Dienstag',
+          'wed': 'Mittwoch',
+          'thu': 'Donnerstag',
+          'fri': 'Freitag',
+          'sat': 'Samstag',
+          'sun': 'Sonntag'
+        };
+        document.querySelectorAll('.hour-day').forEach(el => {
+          const day = el.textContent.toLowerCase();
+          if (dayMap[day]) {
+            el.textContent = dayMap[day];
+          }
+        });
+        
+        // Menu labels - match by slugified category name
         const menuLabels = translations.menu_labels || {};
-        document.querySelectorAll('.menu-category h3').forEach((h3, i) => {
-          const keys = Object.keys(menuLabels);
-          if (keys[i] && menuLabels[keys[i]]) {
-            h3.textContent = menuLabels[keys[i]];
+        document.querySelectorAll('.menu-category h3').forEach(h3 => {
+          const slug = h3.textContent.toLowerCase().replace(/\s+/g, '-');
+          // Map common names to keys
+          const keyMap = {
+            'appetizers': 'appetizers',
+            'vorspeisen': 'appetizers',
+            'pizza': 'pizza',
+            'pasta': 'pasta',
+            'desserts': 'desserts',
+            'getranke': 'drinks',
+            'getränke': 'drinks'
+          };
+          const key = keyMap[slug];
+          if (key && menuLabels[key]) {
+            h3.textContent = menuLabels[key];
           }
         });
         

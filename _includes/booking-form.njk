@@ -1,7 +1,7 @@
 {% if restaurant.booking %}
 <section class="form-section" id="booking">
   <div class="container">
-    <h3>Book a Table</h3>
+    <h3 data-i18n="booking_title">Book a Table</h3>
     <form id="booking-form" data-restaurant-name="{{ restaurant.name }}" data-restaurant-email="{{ restaurant.email or '' }}">
       <div class="form-group">
         <label for="booking-name">Your Name</label>
