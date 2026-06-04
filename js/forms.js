@@ -21,6 +21,12 @@ function storeOriginalTexts() {
     originalTexts.set('menu:' + i, h3.textContent);
   });
   
+  // Store about text
+  const aboutContent = document.querySelector('.about-content');
+  if (aboutContent) {
+    originalTexts.set('about', aboutContent.innerHTML);
+  }
+  
   // Store footer
   const footerP = document.querySelector('.site-footer p:last-of-type');
   if (footerP) {
@@ -133,6 +139,13 @@ function applyLanguage(lang) {
       const original = originalTexts.get('menu:' + i);
       if (original) h3.textContent = original;
     });
+    
+    // Restore about text
+    const aboutContent = document.querySelector('.about-content');
+    const originalAbout = originalTexts.get('about');
+    if (aboutContent && originalAbout) {
+      aboutContent.innerHTML = originalAbout;
+    }
     
     const footerP = document.querySelector('.site-footer p:last-of-type');
     const originalFooter = originalTexts.get('footer');
