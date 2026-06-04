@@ -15,7 +15,8 @@ module.exports = function (eleventyConfig) {
     "js": "js",
     "assets/logo.jpg": "logo.jpg",
     "assets/hero.jpg": "hero.jpg",
-    "assets/menu": "assets/menu"
+    "assets/menu": "assets/menu",
+    "_data/restaurant.de.json": "_data/restaurant.de.json"
   });
 
   // Filter for formatting currency (Euros)

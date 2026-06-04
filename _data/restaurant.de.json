@@ -1,6 +1,6 @@
 {
-  "name": "Gaststätte München",
-  "tagline": "Bayerische Küche seit 1987",
+  "name": "Tony's Pizza",
+  "tagline": "Authentisch Neapolitanisch Seit 1987",
   "menu_labels": {
     "appetizers": "Vorspeisen",
     "pizza": "Pizza",
@@ -16,13 +16,13 @@
     ],
     "pizza": [
       { "name": "Margherita", "description": "San-Marzano-Tomaten, Mozzarella, Basilikum" },
-      { "name": "Diavola", "description": "Scharfe Salami, Peperoni, Mozzarella" },
-      { "name": "Quattro Formaggi", "description": "Vier Käsesorten, Knoblauch, Honig" },
+      { "name": "Pepperoni", "description": "Hausgemachte Pepperoni, Mozzarella" },
+      { "name": "Quattro Formaggi", "description": "Vier-Käse-Mischung, Knoblauch, Honig" },
       { "name": "Prosciutto e Rucola", "description": "Schinken, Rucola, Parmesan" }
     ],
     "pasta": [
-      { "name": "Carbonara", "description": "Speck, Ei, Parmesan, schwarzer Pfeffer" },
-      { "name": "Penne all'Arrabbiata", "description": "Scharfe Tomatensauce, Knoblauch, Chiliflocken" },
+      { "name": "Spaghetti Carbonara", "description": "Pancetta, Ei, Parmesan, schwarzer Pfeffer" },
+      { "name": "Penne Arrabbiata", "description": "Scharfe Tomatensauce, Knoblauch, Chiliflocken" },
       { "name": "Fettuccine Alfredo", "description": "Cremige Sauce, Parmesan, Butter" }
     ],
     "desserts": [
@@ -31,7 +31,7 @@
       { "name": "Panna Cotta", "description": "Vanillemousse, Beerenkompott" }
     ],
     "drinks": [
-      { "name": "Limonata", "description": "Nach Wahl" },
+      { "name": "Italian Soda", "description": "Nach Wahl" },
       { "name": "Espresso", "description": "Ein- oder doppelt" },
       { "name": "Hauswein (Glas)", "description": "Rot oder Weiß" }
     ]
