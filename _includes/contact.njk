@@ -1,7 +1,7 @@
 {% if restaurant.address or restaurant.phone or restaurant.social %}
 <section class="contact-section" id="contact">
   <div class="container">
-    <h2>Contact</h2>
+    <h2 data-i18n="contact">Contact</h2>
     <div class="contact-info">
       {% if restaurant.address %}<p>{{ restaurant.address }}</p>{% endif %}
       {% if restaurant.phone %}<p><a href="tel:{{ restaurant.phone }}">{{ restaurant.phone }}</a></p>{% endif %}
