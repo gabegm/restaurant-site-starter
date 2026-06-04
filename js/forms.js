@@ -37,6 +37,32 @@ function storeOriginalTexts() {
   document.querySelectorAll('.hour-day').forEach((el, i) => {
     originalTexts.set('day:' + i, el.textContent);
   });
+  
+  // Store form label text
+  document.querySelectorAll('form label').forEach((label, i) => {
+    originalTexts.set('label:' + i, label.textContent);
+  });
+  
+  // Store form button text
+  document.querySelectorAll('form button[type="submit"]').forEach((btn, i) => {
+    originalTexts.set('button:' + i, btn.textContent);
+  });
+  
+  // Store form select options
+  document.querySelectorAll('form select option').forEach((opt, i) => {
+    originalTexts.set('option:' + i, opt.textContent);
+  });
+  
+  // Store form placeholders
+  document.querySelectorAll('form input[placeholder], form textarea[placeholder]').forEach((input, i) => {
+    originalTexts.set('placeholder:' + i, input.placeholder);
+  });
+  
+  // Store time hint
+  const timeHint = document.querySelector('form small');
+  if (timeHint) {
+    originalTexts.set('time_hint', timeHint.textContent);
+  }
 }
 
 function setLanguage(lang) {
@@ -186,6 +212,37 @@ function applyLanguage(lang) {
       const original = originalTexts.get('day:' + i);
       if (original) el.textContent = original;
     });
+    
+    // Restore form labels
+    document.querySelectorAll('form label').forEach((label, i) => {
+      const original = originalTexts.get('label:' + i);
+      if (original) label.textContent = original;
+    });
+    
+    // Restore form buttons
+    document.querySelectorAll('form button[type="submit"]').forEach((btn, i) => {
+      const original = originalTexts.get('button:' + i);
+      if (original) btn.textContent = original;
+    });
+    
+    // Restore form select options
+    document.querySelectorAll('form select option').forEach((opt, i) => {
+      const original = originalTexts.get('option:' + i);
+      if (original) opt.textContent = original;
+    });
+    
+    // Restore form placeholders
+    document.querySelectorAll('form input[placeholder], form textarea[placeholder]').forEach((input, i) => {
+      const original = originalTexts.get('placeholder:' + i);
+      if (original) input.placeholder = original;
+    });
+    
+    // Restore time hint
+    const timeHint = document.querySelector('form small');
+    const originalTimeHint = originalTexts.get('time_hint');
+    if (timeHint && originalTimeHint) {
+      timeHint.textContent = originalTimeHint;
+    }
     
     const footerP = document.querySelector('.site-footer p:last-of-type');
     const originalFooter = originalTexts.get('footer');
