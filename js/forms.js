@@ -180,6 +180,23 @@ function applyLanguage(lang) {
           if (notesTextarea && o.placeholder_instructions) notesTextarea.placeholder = o.placeholder_instructions;
         }
         
+        // Menu items - translate within each category
+        const menuItems = translations.menu_items || {};
+        const categoryKeys = Object.keys(menuItems);
+        document.querySelectorAll('.menu-category').forEach((catDiv, catIndex) => {
+          const key = categoryKeys[catIndex];
+          if (!key || !menuItems[key]) return;
+          const items = catDiv.querySelectorAll('.menu-item');
+          items.forEach((item, itemIndex) => {
+            const menuItem = menuItems[key][itemIndex];
+            if (!menuItem) return;
+            const nameEl = item.querySelector('.menu-item-name');
+            const descEl = item.querySelector('.menu-item-description');
+            if (nameEl && menuItem.name) nameEl.textContent = menuItem.name;
+            if (descEl && menuItem.description) descEl.textContent = menuItem.description;
+          });
+        });
+        
         // Footer
         const footerP = document.querySelector('.site-footer p:last-of-type');
         if (footerP && translations.footer) {
