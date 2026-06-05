@@ -83,9 +83,6 @@ function applyLanguage(lang) {
   btn.textContent = lang === 'de' ? 'EN' : 'DE';
   btn.setAttribute('aria-label', lang === 'de' ? 'Switch to English' : 'Zur deutschen Sprache wechseln');
   
-  // Store original English texts on first load
-  storeOriginalTexts();
-  
   if (lang === 'de') {
     fetch('_data/restaurant.de.json')
       .then(r => r.json())
@@ -157,6 +154,11 @@ function applyLanguage(lang) {
           if (submitBtn && b.submit) submitBtn.textContent = b.submit;
           const timeHint = bookingForm.querySelector('small');
           if (timeHint && b.time_hint) timeHint.textContent = b.time_hint;
+          // Set booking notes textarea placeholder
+          const bookingNotesTextarea = bookingForm.querySelector('textarea[name="notes"]');
+          if (bookingNotesTextarea && b.placeholder_requests) {
+            bookingNotesTextarea.placeholder = b.placeholder_requests;
+          }
         }
         
         // Order form
@@ -164,12 +166,19 @@ function applyLanguage(lang) {
         if (orderForm && translations.forms && translations.forms.order) {
           const o = translations.forms.order;
           const labels = orderForm.querySelectorAll('label');
-          const labelsMap = ['name', 'phone', 'order_type', 'address', 'special_instructions'];
-          labels.forEach((label, i) => {
-            if (labelsMap[i] && o[labelsMap[i]]) {
-              label.textContent = o[labelsMap[i]];
+          // Only translate the first 4 labels (name, phone, order_type, address)
+          // The Special Instructions label is translated separately via data-i18n
+          const labelsMap = ['name', 'phone', 'order_type', 'address'];
+          labelsMap.forEach((key, i) => {
+            if (labels[i] && o[key]) {
+              labels[i].textContent = o[key];
             }
           });
+          // Translate Special Instructions label using its data-i18n attribute
+          const specialInstrLabel = orderForm.querySelector('label[data-i18n="special_instructions"]');
+          if (specialInstrLabel && o.special_instructions) {
+            specialInstrLabel.textContent = o.special_instructions;
+          }
           const typeSelect = orderForm.querySelector('select[name="orderType"]');
           if (typeSelect) {
             const options = typeSelect.querySelectorAll('option');
@@ -236,11 +245,39 @@ function applyLanguage(lang) {
       if (original) el.textContent = original;
     });
     
-    // Restore form labels
-    document.querySelectorAll('form label').forEach((label, i) => {
-      const original = originalTexts.get('label:' + i);
-      if (original) label.textContent = original;
-    });
+    // Restore booking form labels (7 labels: name, email, phone, date, time, party_size, special_requests)
+    const bookingForm = document.getElementById('booking-form');
+    if (bookingForm) {
+      const labels = bookingForm.querySelectorAll('label');
+      const bookingLabelsMap = ['name', 'email', 'phone', 'date', 'time', 'party_size', 'special_requests'];
+      bookingLabelsMap.forEach((key, i) => {
+        if (labels[i]) {
+          const original = originalTexts.get('label:' + i);
+          if (original) labels[i].textContent = original;
+        }
+      });
+    }
+    
+    // Restore order form labels (only the 4 order form labels, not menu item labels)
+    const orderForm = document.getElementById('order-form');
+    if (orderForm) {
+      const labels = orderForm.querySelectorAll('label');
+      // Only restore the first 4 labels (name, phone, order_type, address)
+      // The Special Instructions label is restored separately via data-i18n
+      const labelsMap = ['name', 'phone', 'order_type', 'address'];
+      labelsMap.forEach((key, i) => {
+        if (labels[i]) {
+          const original = originalTexts.get('label:' + i);
+          if (original) labels[i].textContent = original;
+        }
+      });
+      // Restore Special Instructions label using its data-i18n attribute
+      const specialInstrLabel = orderForm.querySelector('label[data-i18n="special_instructions"]');
+      if (specialInstrLabel) {
+        const original = originalTexts.get('label:' + 4);
+        if (original) specialInstrLabel.textContent = original;
+      }
+    }
     
     // Restore form buttons
     document.querySelectorAll('form button[type="submit"]').forEach((btn, i) => {
@@ -284,6 +321,11 @@ function applyLanguage(lang) {
 
 // Initialize language
 document.addEventListener('DOMContentLoaded', () => {
+  // Store English originals BEFORE any language switching happens.
+  // The initial HTML is always in English (server-rendered by Eleventy),
+  // so this captures the true English text regardless of localStorage.
+  storeOriginalTexts();
+  
   const lang = getLanguage();
   applyLanguage(lang);
   
