@@ -117,6 +117,28 @@ img {
   margin-left: auto;
 }
 
+.lang-btn {
+  background: transparent;
+  border: 2px solid #fff;
+  color: #fff;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  margin-right: 8px;
+}
+
+.lang-btn:hover {
+  background: #fff;
+  color: var(--color-primary);
+}
+
 .dark-mode-btn {
   background: transparent;
   border: 2px solid var(--color-accent);
@@ -279,8 +301,11 @@ section h2 {
 }
 
 .map-container {
+  max-width: var(--max-width);
   width: 100%;
   height: 400px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
 }
 
 .map-container iframe {

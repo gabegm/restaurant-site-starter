@@ -24,6 +24,7 @@
           {% if restaurant.phone %}
           <a href="tel:{{ restaurant.phone }}" class="phone-link">{{ restaurant.phone }}</a>
           {% endif %}
+          <button id="lang-toggle" class="lang-btn" aria-label="Switch language">DE</button>
           <button id="dark-mode-toggle" class="dark-mode-btn" aria-label="Toggle dark mode">🌙</button>
         </div>
       </div>
@@ -46,11 +47,11 @@
 
     <section class="menu-section" id="menu">
       <div class="container">
-        <h2>Menu</h2>
+        <h2 data-i18n="menu">Menu</h2>
         {% set categories = restaurant.menu %}
         {% for category in categories %}
         <div class="menu-category">
-          <h3>{{ category.name }}</h3>
+          <h3 data-i18n="menu.{{ category.name | slugify }}">{{ category.name }}</h3>
           <div class="menu-items">
             {% for item in category.items %}
             <div class="menu-item">

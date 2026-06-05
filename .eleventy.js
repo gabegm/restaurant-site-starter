@@ -15,13 +15,14 @@ module.exports = function (eleventyConfig) {
     "js": "js",
     "assets/logo.jpg": "logo.jpg",
     "assets/hero.jpg": "hero.jpg",
-    "assets/menu": "assets/menu"
+    "assets/menu": "assets/menu",
+    "_data/restaurant.de.json": "_data/restaurant.de.json"
   });
 
-  // Filter for formatting currency
+  // Filter for formatting currency (Euros)
   eleventyConfig.addFilter("currency", (value) => {
     if (typeof value === "number") {
-      return `$${value.toFixed(2)}`;
+      return `€${value.toFixed(2)}`;
     }
     return value;
   });

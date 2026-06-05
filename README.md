@@ -157,6 +157,37 @@ If you find a free Eleventy or static site theme online, you can often adapt it:
 
 The data structure is documented in the `restaurant.md` file — just map the theme's variables to our fields.
 
+### Adding a New Language
+
+Your site comes with English (default) and German. To add another language (e.g., Italian):
+
+1. **Copy the German translation file** and rename it with the language code:
+   ```bash
+   cp _data/restaurant.de.json _data/restaurant.it.json
+   ```
+
+2. **Translate all the values** in the new file. The structure mirrors the English content:
+   - `section_titles` — page section headers (Menu, Contact, Hours, etc.)
+   - `menu_labels` — menu category names (Appetizers, Pizza, etc.)
+   - `menu_items` — item names and descriptions
+   - `forms` — form labels, placeholders, and button text
+   - `about_text` — your restaurant story
+
+3. **Register the file** in `.eleventy.js` — add one line to `addPassthroughCopy`:
+   ```js
+   "_data/restaurant.it.json": "_data/restaurant.it.json"
+   ```
+
+4. **Update the language toggle** in `js/forms.js` — change the cycle to include your new language:
+   ```js
+   const langs = ['en', 'de', 'it'];  // add your language code
+   const current = getLanguage();
+   const next = langs[(langs.indexOf(current) + 1) % langs.length];
+   setLanguage(next);
+   ```
+
+The language button will cycle through all enabled languages. Customers pick their language once — it's saved in their browser.
+
 ## Custom Domain
 
 Want to use `www.yourrestaurant.com` instead of GitHub Pages?

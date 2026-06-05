@@ -1,0 +1,82 @@
+{
+  "name": "Tony's Pizza",
+  "tagline": "Authentisch Neapolitanisch Seit 1987",
+  "about_text": "Tony's Pizza bringt die authentischen Aromen Neapels nach München. Gegründet 1985 von Tony Rossi, servieren wir seitdem handgemachte Pizzen mit den feinsten importierten Zutaten. Jede Speiche erzählt eine Geschichte von Tradition, Leidenschaft und Liebe zur italienischen Küche.",
+  "menu_labels": {
+    "appetizers": "Vorspeisen",
+    "pizza": "Pizza",
+    "pasta": "Pasta",
+    "desserts": "Nachspeisen",
+    "drinks": "Getränke"
+  },
+  "menu_items": {
+    "appetizers": [
+      { "name": "Bruschetta", "description": "Geröstetes Brot mit Tomaten, Knoblauch, Basilikum" },
+      { "name": "Calamari", "description": "Gebratene Tintenfische mit Marinara" },
+      { "name": "Caprese", "description": "Frischer Mozzarella, Tomaten, Basilikum, Balsamico" }
+    ],
+    "pizza": [
+      { "name": "Margherita", "description": "San-Marzano-Tomaten, Mozzarella, Basilikum" },
+      { "name": "Pepperoni", "description": "Hausgemachte Pepperoni, Mozzarella" },
+      { "name": "Quattro Formaggi", "description": "Vier-Käse-Mischung, Knoblauch, Honig" },
+      { "name": "Prosciutto e Rucola", "description": "Schinken, Rucola, Parmesan" }
+    ],
+    "pasta": [
+      { "name": "Spaghetti Carbonara", "description": "Pancetta, Ei, Parmesan, schwarzer Pfeffer" },
+      { "name": "Penne Arrabbiata", "description": "Scharfe Tomatensauce, Knoblauch, Chiliflocken" },
+      { "name": "Fettuccine Alfredo", "description": "Cremige Sauce, Parmesan, Butter" }
+    ],
+    "desserts": [
+      { "name": "Tiramisu", "description": "Klassisches italienisches Dessert" },
+      { "name": "Cannoli", "description": "Ricotta gefüllt, Schokoladenstreusel" },
+      { "name": "Panna Cotta", "description": "Vanillemousse, Beerenkompott" }
+    ],
+    "drinks": [
+      { "name": "Italian Soda", "description": "Nach Wahl" },
+      { "name": "Espresso", "description": "Ein- oder doppelt" },
+      { "name": "Hauswein (Glas)", "description": "Rot oder Weiß" }
+    ]
+  },
+  "section_titles": {
+    "menu": "Speisekarte",
+    "about": "Über uns",
+    "contact": "Kontakt",
+    "location": "Finden Sie uns",
+    "hours": "Öffnungszeiten",
+    "booking": "Tisch reservieren",
+    "order": "Bestellen",
+    "booking_title": "Tisch reservieren",
+    "order_title": "Bestellen zum Abholen/Liefern"
+  },
+  "forms": {
+    "booking": {
+      "title": "Tisch reservieren",
+      "name": "Ihr Name",
+      "email": "E-Mail",
+      "phone": "Telefon",
+      "date": "Datum",
+      "time": "Uhrzeit",
+      "party_size": "Personenzahl",
+      "special_requests": "Besondere Wünsche",
+      "placeholder_requests": "Allergien, Feiern, Sitzwünsche...",
+      "submit": "Reservierungsanfrage senden",
+      "select": "Auswählen...",
+      "time_hint": "24-Stunden-Format: 18:30"
+    },
+    "order": {
+      "title": "Bestellen zum Abholen/Liefern",
+      "name": "Ihr Name",
+      "phone": "Telefon",
+      "order_type": "Bestellart",
+      "pickup": "Abholung",
+      "delivery": "Lieferung",
+      "address": "Lieferadresse",
+      "address_placeholder": "Musterstraße 1, Stadt, PLZ",
+      "select_items": "Artikel auswählen",
+      "special_instructions": "Besondere Anweisungen",
+      "placeholder_instructions": "Allergien, Wünsche, etc.",
+      "submit": "Bestellanfrage senden"
+    }
+  },
+  "footer": "Alle Rechte vorbehalten."
+}
