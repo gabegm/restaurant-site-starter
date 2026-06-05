@@ -63,6 +63,12 @@ function storeOriginalTexts() {
   if (timeHint) {
     originalTexts.set('time_hint', timeHint.textContent);
   }
+  
+  // Store order form "Select Items" header
+  const selectItemsH4 = document.querySelector('#order-form h4');
+  if (selectItemsH4) {
+    originalTexts.set('select_items', selectItemsH4.textContent);
+  }
 }
 
 function setLanguage(lang) {
@@ -259,6 +265,13 @@ function applyLanguage(lang) {
     const originalTimeHint = originalTexts.get('time_hint');
     if (timeHint && originalTimeHint) {
       timeHint.textContent = originalTimeHint;
+    }
+    
+    // Restore order form "Select Items" header
+    const selectItemsH4 = document.querySelector('#order-form h4');
+    const originalSelectItems = originalTexts.get('select_items');
+    if (selectItemsH4 && originalSelectItems) {
+      selectItemsH4.textContent = originalSelectItems;
     }
     
     const footerP = document.querySelector('.site-footer p:last-of-type');
